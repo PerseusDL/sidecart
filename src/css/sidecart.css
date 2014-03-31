@@ -1,0 +1,77 @@
+/* General */
+.sidecart {
+	-webkit-transition: all .25s ease-in;
+	-moz-transition: all .25s ease-in;
+	-o-transition: all .25s ease-in;
+	transition: all .25s ease-in;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 255;
+	overflow-x: hidden;
+	padding: 10px 10px 10px 0;
+	box-sizing: border-box;
+}
+.sidecart.hidden {
+	background-color: rgba(0,0,0,0);
+}
+.sidecart .inner {
+	overflow-x: hidden;
+    overflow-y: scroll; 
+    width: 9999px; 
+	height: 100%;
+}
+.sidecart .icons {
+	background-color: rgba(0,0,0,.5);
+	float: left;
+}
+.sidecart .icons a {
+	display: block;
+	padding: 5px;
+	margin: 2px;
+	text-decoration: none;
+	color: #EFEFEF;
+	background-color: rgba(0,0,0,.5);
+}
+.sidecart .icons a:hover,
+.sidecart .icons a.selected {
+	color: #FFF;
+	background-color: rgba(0,0,0,1);
+}
+.sidecart .items {
+	width: 320px;
+	float: left;
+	padding: 20px;
+	background-color: rgba(0,0,0,.75);
+}
+.sidecart .items .item p {
+	margin-top: 0;
+}
+/* Type-Specific */
+/* Annotations */
+.sidecart.annotations {
+	font-size: 14px;
+	color: #CCC;
+}
+.sidecart.annotations .name,
+.sidecart.annotations .time {
+	text-align: right;
+}
+.sidecart.annotations .name {
+	color: #777;
+}
+.sidecart.annotations .time {
+	color: #666;
+}
+.sidecart.annotations .items .item {
+	padding: 20px 0 40px 0;
+	border-bottom: 2px dotted #555;
+}
+.sidecart.annotations .items .item:first-of-type {
+	padding-top: 0;
+}
+.sidecart.annotations .items .item:last-of-type {
+	padding-bottom: 0;
+	border-bottom: none;
+}

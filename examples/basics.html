@@ -13,15 +13,21 @@
 	<script type="text/javascript" src="../src/js/sidecart.js"></script>
 	<script type="text/javascript">
 		$(document).ready( function() {
-			function init( _data ) {}
-			function refresh( _data ) {}
+			function init( _p1 ) {
+				console.log( _p1 );
+			}
+			function refresh( _p1 ) {
+				console.log( _p1 );
+			}
+			var p1 = 'argument1';
+			var p2 = 'argument2';
 			$('#sidecart').sidecart({
 				side: 'left',
 				views: [
 					{
 						link: 'student annotations',
-						init: init(),
-						refresh: refresh()
+						init: init( p1 ),
+						refresh: refresh( p2 )
 					}
 				]
 			});
