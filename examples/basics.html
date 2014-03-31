@@ -1,0 +1,30 @@
+<html>
+	<head>
+		<!-- Load CSS -->
+		<link href="../src/css/sidecart.css" rel="stylesheet" type="text/css" />
+		<!-- End Load CSS -->
+		<title>sidecart</title>
+	<head>
+	<body>
+		<div id="sidecart"></div>
+	</body>
+	<!-- Load Javascript -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript" src="../src/js/sidecart.js"></script>
+	<script type="text/javascript">
+		$(document).ready( function() {
+			function init( _data ) {}
+			function refresh( _data ) {}
+			$('#sidecart').sidecart({
+				side: 'left',
+				views: [
+					{
+						link: 'student annotations',
+						init: init(),
+						refresh: refresh()
+					}
+				]
+			});
+		});
+	</script>
+<html>
