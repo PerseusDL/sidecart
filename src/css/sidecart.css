@@ -21,6 +21,8 @@
 	overflow-y: scroll;
 	height: 100%;
 	width: 320px;
+	padding: 20px;
+	background-color: rgba(0,0,0,.85);
 }
 .sidecart.hidden .inner {
 	width: 0;
@@ -42,16 +44,9 @@
 .sidecart .icons a.selected {
 	background-color: rgba(255,255,255,.4);
 }
-.sidecart .items {
-	padding: 20px;
-	background-color: rgba(0,0,0,.85);
-}
-.sidecart .items .item p {
-	margin-top: 0;
-}
 /* Type-Specific */
 /* Annotations */
-.sidecart.annotations {
+.sidecart .annotations {
 	font: 14px/18px 
 		"Open Sans", "Helvetica Neue Light", 
 		"Helvetica Neue", Helvetica, 
@@ -59,35 +54,39 @@
 	font-weight: 300;
 	color: #CCC;
 }
-.sidecart.annotations .name,
-.sidecart.annotations .time,
-.sidecart.annotations .date {
+.sidecart .annotations .name,
+.sidecart .annotations .time,
+.sidecart .annotations .date {
 	text-align: right;
 }
-.sidecart.annotations .name {
+.sidecart .annotations .name {
 	color: #777;
 }
-.sidecart.annotations .time,
-.sidecart.annotations .date {
+.sidecart .annotations .time,
+.sidecart .annotations .date {
 	color: #666;
 }
-.sidecart.annotations .items .item {
+.sidecart .annotations .items {}
+.sidecart .annotations .items .item p {
+	margin-top: 0;
+}
+.sidecart .annotations .items .item {
 	padding: 20px 0 40px 0;
 	border-bottom: 2px dotted #555;
 }
-.sidecart.annotations .items .item:first-of-type {
+.sidecart .annotations .items .item:first-of-type {
 	padding-top: 0;
 }
-.sidecart.annotations .items .item:last-of-type {
+.sidecart .annotations .items .item:last-of-type {
 	padding-bottom: 0;
 	border-bottom: none;
 }
-.sidecart.annotations a.readmore-js-toggle {
+.sidecart .annotations a.readmore-js-toggle {
 	display: inline-block;
 	margin-left: 10px;
 	font-size: 10px;
 	color: #EE6666;
 }
-.sidecart.annotations a.readmore-js-toggle:hover {
+.sidecart .annotations a.readmore-js-toggle:hover {
 	color: #FF9999;
 }

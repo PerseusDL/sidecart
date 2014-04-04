@@ -21,54 +21,125 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-;(function($) {
+;( function( jQuery ) {
 	
 	/**
 	 * Holds default options, adds user defined options, and initializes the plugin
 	 *
 	 * @param { obj } _elem The DOM element where the plugin will be drawn
-	 *
-	 * @param { obj } _options Key value pairs to hold the plugin's configuration
-	 *
+	 * @param { obj } _config Key value pairs to hold the plugin's configuration
 	 * @param { string } _id The id of the DOM element
 	 */
-	function sidecart( _elem, _options, _id ) {
+	function sidecart( _elem, _config, _id ) {
 		var self = this;
 		self.elem = _elem;
 		self.id = _id;
-		self.init( _elem, _options );
+		self.init( _elem, _config );
 	}
 	
 	/**
 	 * Holds default options, adds user defined options, and initializes the plugin
 	 *
 	 * @param { obj } _elem The DOM element where the plugin will be drawn
-	 *
-	 * @param { obj } _options Key value pairs to hold the plugin's configuration
+	 * @param { obj } _config Key value pairs to hold the plugin's configuration
 	 */
-	sidecart.prototype.init = function( _elem, _options ) {
+	sidecart.prototype.init = function( _elem, _config ) {
 		var self = this;
 		
 		//------------------------------------------------------------
 		//	Mark your territory
 		//------------------------------------------------------------
-		$( self.elem ).addClass('sidecart')
+		jQuery( self.elem ).addClass('sidecart')
 		
 		//------------------------------------------------------------
 		//	User options 
 		//------------------------------------------------------------
-		self.options = $.extend({}, _options );
+		self.config = jQuery.extend({}, _config );
+		
+		//------------------------------------------------------------
+		//  Start me up!
+		//------------------------------------------------------------
+		self.start();
+	}
+	
+	/**
+	 * Start up sidecart.
+	 */
+	sidecart.prototype.start = function() {
+		this.buildWrapper();
+		this.buildViews();
+		this.clickStart();
+	}
+	
+	/**
+	 * Build the application wrapper.
+	 */
+	sidecart.prototype.buildWrapper = function() {
+		jQuery( this.elem ).append( '\
+			<div class="tabs"></div>\
+			<div class="inner">\
+				<div class="views"></div>\
+			</div>\
+		');
+	}
+	
+	/**
+	 * Build the all views.
+	 */
+	sidecart.prototype.buildViews = function() {
+		for ( var i=0, ii=this.config['views'].length; i<ii; i++ ) {
+			var view = this.config['views'][i];
+			this.buildView( view );
+		}
+	}
+	
+	/**
+	 * Build a single view.
+	 *
+	 * @param { Object } _view 		A single view config object.
+	 *								See constructor.
+	 */
+	sidecart.prototype.buildView = function( _view ) {
+		//------------------------------------------------------------
+		//  Build the view
+		//------------------------------------------------------------
+		console.log( _view );
+		jQuery( '.views', this.elem ).append( '\
+			<div id="'+ _view.id +'" class="'+ _view.type +'">\
+			'+ jQuery( _view.src ).html() +'</div>\
+		');
+		//------------------------------------------------------------
+		//  Build the link
+		//------------------------------------------------------------
+		//------------------------------------------------------------
+		// Run view init function
+		//------------------------------------------------------------
+		_view['init']();
+	}
+	
+	
+	sidecart.prototype.clickStart = function() {
+		var self = this;
+		jQuery('.tabs a', self.elem ).click(function( _e ){
+			_e.preventDefault();
+			if ( jQuery( self.elem ).hasClass('hidden') ) {
+				jQuery( self.elem ).removeClass('hidden');
+			}
+			else {
+				jQuery( self.elem ).addClass('hidden');
+			}
+		});
 	}
 	
 	//----------------
 	//	Extend JQuery 
 	//----------------
-	jQuery(document).ready( function($) {
-		jQuery.fn.sidecart = function( options ) {
-			var id = jQuery(this).selector;
+	jQuery( document ).ready( function( jQuery ) {
+		jQuery.fn.sidecart = function( _config ) {
+			var id = jQuery( this ).selector;
 			return this.each( function() {
-				jQuery.data( this, id, new sidecart( this, options, id ) );
+				jQuery.data( this, id, new sidecart( this, _config, id ) );
 			});
 		};
 	})
-})(jQuery);
+})( jQuery );
