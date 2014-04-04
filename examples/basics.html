@@ -31,12 +31,17 @@
 		</div>
 	</body>
 	<!-- Load Javascript -->
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script type="text/javascript" src="../src/js/sidecart.js"></script>
+	<script type="text/javascript" src="../third_party/Readmore.js/readmore.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready( function() {
-			function init( _p1 ) {
-				console.log( _p1 );
+			function init() {
+				$('.annotations .text').readmore({
+					maxHeight: 200,
+					moreLink: '<a href="#">More</a>',
+					lessLink: '<a href="#">Less</a>'
+				});
 			}
 			function refresh( _p1 ) {
 				console.log( _p1 );
@@ -49,6 +54,14 @@
 						id: 'annotations-1',
 						type: 'annotations',
 						link: 'A',
+						src: '#content',
+						init: function() { init( p1 ) },
+						refresh: function() { refresh( p2 ) }
+					},
+					{
+						id: 'annotations-2',
+						type: 'annotations',
+						link: 'B',
 						src: '#content',
 						init: function() { init( p1 ) },
 						refresh: function() { refresh( p2 ) }

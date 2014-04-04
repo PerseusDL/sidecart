@@ -68,7 +68,7 @@
 	sidecart.prototype.start = function() {
 		this.buildWrapper();
 		this.buildViews();
-		this.clickStart();
+		this.eventStart();
 	}
 	
 	/**
@@ -103,27 +103,35 @@
 		//------------------------------------------------------------
 		//  Build the view
 		//------------------------------------------------------------
-		console.log( _view );
-		jQuery( '.views', this.elem ).append( '\
+		jQuery( '.views', this.elem ).append('\
 			<div id="'+ _view.id +'" class="'+ _view.type +'">\
-			'+ jQuery( _view.src ).html() +'</div>\
+				'+ jQuery( _view.src ).html() +'\
+			</div>\
 		');
 		//------------------------------------------------------------
 		//  Build the link
 		//------------------------------------------------------------
+		jQuery( '.tabs', this.elem ).append('\
+			<a href="#'+ _view.id +'">'+ _view.link +'</a>\
+		');
 		//------------------------------------------------------------
 		// Run view init function
 		//------------------------------------------------------------
 		_view['init']();
 	}
 	
-	
-	sidecart.prototype.clickStart = function() {
+	/**
+	 * Start event listeners.
+	 */
+	sidecart.prototype.eventStart = function() {
 		var self = this;
-		jQuery('.tabs a', self.elem ).click(function( _e ){
+		jQuery( '.tabs a', self.elem ).on( 'touchstart click', function( _e ) {
 			_e.preventDefault();
 			if ( jQuery( self.elem ).hasClass('hidden') ) {
 				jQuery( self.elem ).removeClass('hidden');
+				//------------------------------------------------------------
+				//  Run refresh
+				//------------------------------------------------------------
 			}
 			else {
 				jQuery( self.elem ).addClass('hidden');

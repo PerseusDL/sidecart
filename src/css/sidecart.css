@@ -1,5 +1,9 @@
 /* General */
 .sidecart {
+	font: 14px/18px 
+		"Open Sans", "Helvetica Neue Light", 
+		"Helvetica Neue", Helvetica, 
+		Arial, sans-serif;
 	height: 100%;
 	position: fixed;
 	top: 0;
@@ -21,36 +25,36 @@
 	overflow-y: scroll;
 	height: 100%;
 	width: 320px;
-	padding: 20px;
 	background-color: rgba(0,0,0,.85);
+}
+.sidecart .views {
+	padding: 20px;
 }
 .sidecart.hidden .inner {
 	width: 0;
 }
-.sidecart .icons {
+.sidecart .tabs {
+	-webkit-border-radius: 2px 0 0 2px; 
+	-moz-border-radius: 2px 0 0 2px; 
+	border-radius: 2px 0 0 2px; 
 	margin-top: 2px;
-	background-color: rgba(0,0,0,.75);
+	background-color: #222;
 	float: left;
 }
-.sidecart .icons a {
+.sidecart .tabs a {
 	display: block;
 	padding: 5px;
-	margin: 2px;
+	margin: 1px;
 	text-decoration: none;
-	color: #222;
-	background-color: rgba(255,255,255,.2);
+	color: #AAA;
 }
-.sidecart .icons a:hover,
-.sidecart .icons a.selected {
-	background-color: rgba(255,255,255,.4);
+.sidecart .tabs a:hover,
+.sidecart .tabs a.selected {
+	background-color: #444;
 }
 /* Type-Specific */
 /* Annotations */
 .sidecart .annotations {
-	font: 14px/18px 
-		"Open Sans", "Helvetica Neue Light", 
-		"Helvetica Neue", Helvetica, 
-		Arial, sans-serif;
 	font-weight: 300;
 	color: #CCC;
 }
