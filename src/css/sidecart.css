@@ -47,10 +47,11 @@
 	margin: 1px;
 	text-decoration: none;
 	color: #AAA;
+	background-color: #444;
 }
 .sidecart .tabs a:hover,
 .sidecart .tabs a.selected {
-	background-color: #444;
+	background-color: #222;
 }
 /* Type-Specific */
 /* Annotations */

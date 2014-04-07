@@ -69,6 +69,7 @@
 		this.buildWrapper();
 		this.buildViews();
 		this.eventStart();
+		this.showFirst();
 	}
 	
 	/**
@@ -84,7 +85,7 @@
 	}
 	
 	/**
-	 * Build the all views.
+	 * Build all of the views.
 	 */
 	sidecart.prototype.buildViews = function() {
 		for ( var i=0, ii=this.config['views'].length; i<ii; i++ ) {
@@ -124,19 +125,87 @@
 	 * Start event listeners.
 	 */
 	sidecart.prototype.eventStart = function() {
+		this.tabClick();
+	}
+	
+	/**
+	 * Click a tab and things happen.
+	 */
+	sidecart.prototype.tabClick = function() {
 		var self = this;
 		jQuery( '.tabs a', self.elem ).on( 'touchstart click', function( _e ) {
 			_e.preventDefault();
-			if ( jQuery( self.elem ).hasClass('hidden') ) {
-				jQuery( self.elem ).removeClass('hidden');
-				//------------------------------------------------------------
-				//  Run refresh
-				//------------------------------------------------------------
-			}
-			else {
-				jQuery( self.elem ).addClass('hidden');
-			}
+			var id = jQuery( this ).attr('href').replace('#','');
+			self.showView( id );
 		});
+	}
+	
+	/**
+	 * Slide cart in and out.
+	 */
+	sidecart.prototype.slide = function() {
+		var self = this;
+		if ( jQuery( self.elem ).hasClass('hidden') ) {
+			this.show();
+			//------------------------------------------------------------
+			//  Run refresh
+			//------------------------------------------------------------
+		}
+		else {
+			this.hide();
+		}
+	}
+	
+	/**
+	 * Show the cart.
+	 */
+	sidecart.prototype.show = function() {
+		jQuery( this.elem ).removeClass('hidden');
+	}
+	
+	/**
+	 * Hide the cart.
+	 */
+	sidecart.prototype.hide = function() {
+		jQuery( this.elem ).addClass('hidden');
+	}
+	
+	/**
+	 * Hide all the views.
+	 */
+	sidecart.prototype.hideViews = function() {
+		jQuery( '.views ', this.elem ).children().hide();
+	}
+	
+	/**
+	 * Show a specific view and hide the others.
+	 *
+	 * @param { string } _id The id of the view.
+	 */
+	sidecart.prototype.showView = function( _id ) {
+		if ( _id === this.last_tab ) {
+			this.slide();
+			return;
+		}
+		else {
+			this.last_tab = _id;
+			this.hideViews();
+			jQuery( '#'+_id, this.elem ).show();
+			jQuery( '.tabs a', this.elem ).removeClass('selected');
+			jQuery( '.tabs a[href="#'+_id+'"]', this.elem ).addClass('selected');
+		}
+	}
+	
+	/**
+	 * Show the first tab. 
+	 */
+	sidecart.prototype.showFirst = function() {
+		var self = this;
+		//------------------------------------------------------------
+		//  Grab the id of the first tab if no default is set.
+		//------------------------------------------------------------
+		var id = jQuery( '.tabs a', self.elem ).first().attr('href').replace('#','');
+		self.showView( id );
 	}
 	
 	//----------------

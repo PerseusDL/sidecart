@@ -37,7 +37,7 @@
 	<script type="text/javascript">
 		$(document).ready( function() {
 			function init() {
-				$('.annotations .text').readmore({
+				$('#annotations-1 .text').readmore({
 					maxHeight: 200,
 					moreLink: '<a href="#">More</a>',
 					lessLink: '<a href="#">Less</a>'
@@ -63,8 +63,8 @@
 						type: 'annotations',
 						link: 'B',
 						src: '#content',
-						init: function() { init( p1 ) },
-						refresh: function() { refresh( p2 ) }
+						init: function() {},
+						refresh: function() {}
 					}
 				]
 			});
