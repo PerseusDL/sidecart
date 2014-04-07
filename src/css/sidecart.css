@@ -49,7 +49,9 @@
 	color: #AAA;
 	background-color: #444;
 }
-.sidecart .tabs a:hover,
+.sidecart .tabs a:hover {
+	background-color: #333;
+}
 .sidecart .tabs a.selected {
 	background-color: #222;
 }

@@ -144,8 +144,7 @@
 	 * Slide cart in and out.
 	 */
 	sidecart.prototype.slide = function() {
-		var self = this;
-		if ( jQuery( self.elem ).hasClass('hidden') ) {
+		if ( this.hidden() ) {
 			this.show();
 			//------------------------------------------------------------
 			//  Run refresh
@@ -154,6 +153,10 @@
 		else {
 			this.hide();
 		}
+	}
+	
+	sidecart.prototype.hidden = function() {
+		return jQuery( this.elem ).hasClass('hidden')
 	}
 	
 	/**
@@ -183,16 +186,36 @@
 	 * @param { string } _id The id of the view.
 	 */
 	sidecart.prototype.showView = function( _id ) {
-		if ( _id === this.last_tab ) {
-			this.slide();
-			return;
-		}
-		else {
+		if ( _id !== this.last_tab ) {
 			this.last_tab = _id;
 			this.hideViews();
 			jQuery( '#'+_id, this.elem ).show();
 			jQuery( '.tabs a', this.elem ).removeClass('selected');
 			jQuery( '.tabs a[href="#'+_id+'"]', this.elem ).addClass('selected');
+			if ( this.hidden() ) {
+				this.slide();
+			}
+			//------------------------------------------------------------
+			//  Run view view refresh callback
+			//------------------------------------------------------------
+			this.viewRefresh( _id );
+		}
+		else {
+			this.slide();
+		}
+	}
+	
+	/**
+	 * Show a specific view and hide the others.
+	 *
+	 * @param { string } _id The id of the view.
+	 */
+	sidecart.prototype.viewRefresh = function( _viewName ) {
+		for ( var i=0, ii=this.config['views'].length; i<ii; i++ ) {
+			var view = this.config['views'][i];
+			if ( view.id == _viewName ) {
+				view.refresh();
+			}
 		}
 	}
 	
