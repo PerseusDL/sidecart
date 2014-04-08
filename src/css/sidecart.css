@@ -13,6 +13,9 @@
 	padding: 0;
 	box-sizing: border-box;
 }
+.sidecart.left {
+	left: 0;
+}
 .sidecart.hidden {
 	background-color: rgba(0,0,0,0);
 }
@@ -26,6 +29,9 @@
 	height: 100%;
 	width: 320px;
 	background-color: rgba(0,0,0,.85);
+}
+.sidecart.left .inner {
+	float: left;
 }
 .sidecart .views {
 	padding: 20px;
@@ -41,16 +47,21 @@
 	background-color: #222;
 	float: left;
 }
+.sidecart.left .tabs{
+	-webkit-border-radius: 0 2px 2px 0;
+	-moz-border-radius: 0 2px 2px 0;
+	border-radius: 0 2px 2px 0;
+}
 .sidecart .tabs a {
 	display: block;
 	padding: 5px;
 	margin: 1px;
 	text-decoration: none;
 	color: #AAA;
-	background-color: #444;
+	background-color: #666;
 }
 .sidecart .tabs a:hover {
-	background-color: #333;
+	background-color: #444;
 }
 .sidecart .tabs a.selected {
 	background-color: #222;
@@ -89,6 +100,7 @@
 	border-bottom: none;
 }
 .sidecart .annotations a.readmore-js-toggle {
+	text-decoration: none;
 	display: inline-block;
 	margin-left: 10px;
 	font-size: 10px;

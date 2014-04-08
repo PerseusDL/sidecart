@@ -54,7 +54,9 @@
 		//------------------------------------------------------------
 		//	User options 
 		//------------------------------------------------------------
-		self.config = jQuery.extend({}, _config );
+		self.config = jQuery.extend({
+			side: 'right'
+		}, _config );
 		
 		//------------------------------------------------------------
 		//  Start me up!
@@ -76,6 +78,22 @@
 	 * Build the application wrapper.
 	 */
 	sidecart.prototype.buildWrapper = function() {
+		//------------------------------------------------------------
+		//  Left side
+		//------------------------------------------------------------
+		if ( this.config['side'] == 'left' ) {
+			jQuery( this.elem ).append( '\
+				<div class="inner">\
+					<div class="views"></div>\
+				</div>\
+				<div class="tabs"></div>\
+			');
+			jQuery( this.elem ).addClass('left');
+			return;
+		}
+		//------------------------------------------------------------
+		//  Right side
+		//------------------------------------------------------------
 		jQuery( this.elem ).append( '\
 			<div class="tabs"></div>\
 			<div class="inner">\
@@ -155,6 +173,9 @@
 		}
 	}
 	
+	/**
+	 * Check if sidecart is hidden.
+	 */
 	sidecart.prototype.hidden = function() {
 		return jQuery( this.elem ).hasClass('hidden')
 	}

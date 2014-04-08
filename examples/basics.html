@@ -6,7 +6,8 @@
 		<title>sidecart</title>
 	<head>
 	<body>
-		<div id="sidecart"></div>
+		<div id="sidecartLeft"></div>
+		<div id="sidecartRight"></div>
 		<div id="content" class="items">
 			<div class="item">
 				<div class="text">
@@ -48,7 +49,28 @@
 			}
 			var p1 = 'argument1';
 			var p2 = 'argument2';
-			$('#sidecart').sidecart({
+			$('#sidecartLeft').sidecart({
+				side: 'left',
+				views: [
+					{
+						id: 'annotations-1',
+						type: 'annotations',
+						link: 'A',
+						src: '#content',
+						init: function() { init( p1 ) },
+						refresh: function() { refresh( p2 ) }
+					},
+					{
+						id: 'annotations-2',
+						type: 'annotations',
+						link: 'B',
+						src: '#content',
+						init: function() {},
+						refresh: function() {}
+					}
+				]
+			});
+			$('#sidecartRight').sidecart({
 				views: [
 					{
 						id: 'annotations-1',
