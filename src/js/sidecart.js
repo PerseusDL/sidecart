@@ -81,19 +81,41 @@
 		//------------------------------------------------------------
 		//  Left side
 		//------------------------------------------------------------
-		if ( this.config['side'] == 'left' ) {
-			jQuery( this.elem ).append( '\
-				<div class="inner">\
-					<div class="views"></div>\
-				</div>\
-				<div class="tabs"></div>\
-			');
-			jQuery( this.elem ).addClass('left');
-			return;
+		switch ( this.config['side'] ) {
+			case 'left':
+				this.buildTabsLast();
+				jQuery( this.elem ).addClass('left');
+				break;
+			case 'top':
+				this.buildTabsLast();
+				jQuery( this.elem ).addClass('top');
+				break;
+			default: // right side
+				jQuery( this.elem ).append( '\
+					<div class="tabs"></div>\
+					<div class="inner">\
+						<div class="views"></div>\
+					</div>\
+				');
 		}
-		//------------------------------------------------------------
-		//  Right side
-		//------------------------------------------------------------
+	}
+	
+	/**
+	 * Build with tab after inner
+	 */
+	sidecart.prototype.buildTabsLast = function() {
+		jQuery( this.elem ).append( '\
+			<div class="inner">\
+				<div class="views"></div>\
+			</div>\
+			<div class="tabs"></div>\
+		');
+	}
+	
+	/**
+	 * Build with tab before inner
+	 */
+	sidecart.prototype.buildTabsFirst = function() {
 		jQuery( this.elem ).append( '\
 			<div class="tabs"></div>\
 			<div class="inner">\

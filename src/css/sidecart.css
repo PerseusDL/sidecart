@@ -16,6 +16,11 @@
 .sidecart.left {
 	left: 0;
 }
+.sidecart.top {
+	height: auto;
+	width: 100%;
+	left: 0;
+}
 .sidecart.hidden {
 	background-color: rgba(0,0,0,0);
 }
@@ -30,6 +35,10 @@
 	width: 320px;
 	background-color: rgba(0,0,0,.85);
 }
+.sidecart.top .inner {
+	height: 320px;
+	width: 100%;
+}
 .sidecart.left .inner {
 	float: left;
 }
@@ -38,6 +47,10 @@
 }
 .sidecart.hidden .inner {
 	width: 0;
+}
+.sidecart.hidden.top .inner {
+	width: auto;
+	height: 0;
 }
 .sidecart .tabs {
 	-webkit-border-radius: 2px 0 0 2px; 
@@ -52,6 +65,12 @@
 	-moz-border-radius: 0 2px 2px 0;
 	border-radius: 0 2px 2px 0;
 }
+.sidecart.top .tabs {
+	margin-top: 0;
+	margin-left: 20px;
+	-webkit-border-radius: 0 0 2px 2px;
+	-moz-border-radius: 0 0 2px 2px;
+}
 .sidecart .tabs a {
 	display: block;
 	padding: 5px;
@@ -59,6 +78,9 @@
 	text-decoration: none;
 	color: #AAA;
 	background-color: #666;
+}
+.sidecart.top .tabs a {
+	display: inline-block;
 }
 .sidecart .tabs a:hover {
 	background-color: #444;

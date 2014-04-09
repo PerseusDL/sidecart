@@ -1,0 +1,74 @@
+<html>
+	<head>
+		<!-- Load CSS -->
+		<link href="../src/css/sidecart.css" rel="stylesheet" type="text/css" />
+		<!-- End Load CSS -->
+		<title>sidecart</title>
+	<head>
+	<body>
+		<div id="sidecartTop"></div>
+		<div id="content" class="items">
+			<div class="item">
+				<div class="text">
+					<p>In this passage, comic playwright Aristophanes parodies Hesiod’s Theogony by making a series of bizarre changes and additions to the genealogy that the ancient Greek audience would be familiar with. First, he creates an unlikely situation where birds, instead of deities talk down to humans. To add to the humor, the birds are there to tell the audience that humans are part of a weak and an unfortunate race that lives a dark life. Aristophanes increases the severity of the humans’ situation by juxtaposing it with that of the birds, which is characterized by immortality, ethereality and youth. The Greek audience may indeed acknowledge the humans’ inferiority as reality since they believed in their own mythologies, which portray humans as beings of low status. Thus, the kind of humor here is possibly a laugh-at-life humor, where people laugh at their own helplessness to bring relief to a situation that cannot be changed.</p>
+					<p>The next comedic change that Aristophanes introduces is the order of the primordial deities. While Hesiod tells us that Eros came before Night, Aristophanes tells us that it is the reverse. The comic playwright is perhaps relying on the common understanding that nighttime implies sexual activities to poke fun at the fact that there cannot be Eros or love without the Night. The swap is also befitting since Aristophanes must create a setting in which the birds’ status can be raised. Night is created first because it represents the sky, a physically high position where the gods and birds live. Eros then springs from an egg, appropriate since he is the creator of birds. To show their superior lineage, the birds continuously boast about how their progenitors have wings like them. The emphasis on wings as proof of superior lineage is used to demonstrate the ridiculous logic of the birds and therefore create humor.</p>
+					<p>Lastly, Aristophanes has the birds speak of the extent of their knowledge and power in an exaggerated manner to make this passage comical. When the birds talk about how much humans will know about the gods after listening to the birds, they claim that even the philosopher Prodicus will envy that knowledge. This cultural reference is funny because Prodicus is a famous philosopher respected even by Plato, so to the audience it must be absurd to think that their knowledge will surpass that of Prodicus. This parodic passage is concluded with an explicit and over the top description of the birds’ power to help lovers fulfill their sexual desires.
+					</p>
+				</div>
+				<div class="name">Mary Jones</div>
+				<div class="date">Tuesday, April 1 2014</div>
+				<div class="time">9:45 AM</div>
+			</div>
+			<div class="item">
+				<div class="text">
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				</div>
+				<div class="name">Davey Jones</div>
+				<div class="date">Tuesday, April 1 2014</div>
+				<div class="time">10:45 AM</div>
+			</div>
+		</div>
+	</body>
+	<!-- Load Javascript -->
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript" src="../src/js/sidecart.js"></script>
+	<script type="text/javascript" src="../third_party/Readmore.js/readmore.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready( function() {
+			function init() {
+				$('#annotations-1 .text').readmore({
+					maxHeight: 200,
+					moreLink: '<a href="#">More</a>',
+					lessLink: '<a href="#">Less</a>'
+				});
+			}
+			function refresh( _p1 ) {
+				console.log( _p1 );
+			}
+			var p1 = 'argument1';
+			var p2 = 'argument2';
+			$('#sidecartTop').sidecart({
+				side: 'top',
+				views: [
+					{
+						id: 'annotations-1',
+						type: 'annotations',
+						link: 'A',
+						src: '#content',
+						init: function() { init( p1 ) },
+						refresh: function() { refresh( p2 ) }
+					},
+					{
+						id: 'annotations-2',
+						type: 'annotations',
+						link: 'B',
+						src: '#content',
+						init: function() {},
+						refresh: function() {}
+					}
+				]
+			});
+		});
+	</script>
+<html>
