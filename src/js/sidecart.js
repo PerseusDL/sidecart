@@ -55,7 +55,8 @@
 		//	User options 
 		//------------------------------------------------------------
 		self.config = jQuery.extend({
-			side: 'right'
+			side: 'right',
+			inside: false
 		}, _config );
 		
 		//------------------------------------------------------------
@@ -98,10 +99,24 @@
 					</div>\
 				');
 		}
+		//------------------------------------------------------------
+		//  Inside parent?
+		//------------------------------------------------------------
+		this.fitToParent();
 	}
 	
 	/**
-	 * Build with tab after inner
+	 * Fit sidecart inside parent.
+	 */
+	sidecart.prototype.fitToParent = function() {
+		if ( this.config['inside'] == true ) {
+			var parent = jQuery( this.elem ).parent();
+			jQuery( this.elem ).width( parent.outerWidth() );
+		}
+	}
+	
+	/**
+	 * Build with tab after inner.
 	 */
 	sidecart.prototype.buildTabsLast = function() {
 		jQuery( this.elem ).append( '\
@@ -113,7 +128,7 @@
 	}
 	
 	/**
-	 * Build with tab before inner
+	 * Build with tab before inner.
 	 */
 	sidecart.prototype.buildTabsFirst = function() {
 		jQuery( this.elem ).append( '\
@@ -166,6 +181,17 @@
 	 */
 	sidecart.prototype.eventStart = function() {
 		this.tabClick();
+		this.resize();
+	}
+	
+	/**
+	 * Start window resize listener.
+	 */
+	sidecart.prototype.resize = function() {
+		var self = this;
+		jQuery( window ).resize( function() {
+			self.fitToParent();
+		})
 	}
 	
 	/**

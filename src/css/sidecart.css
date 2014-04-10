@@ -33,6 +33,7 @@
 	overflow-y: scroll;
 	height: 100%;
 	width: 320px;
+	color: #AAA;
 	background-color: rgba(0,0,0,.85);
 }
 .sidecart.top .inner {
