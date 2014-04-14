@@ -119,13 +119,15 @@
 		if ( this.config['inside'] == true ) {
 			var parent = jQuery( this.elem ).parent();
 			var position = parent.position();
-			jQuery( this.elem ).width( parent.outerWidth() );
 			jQuery( this.elem ).css({ left: position.left });
-			var height = parent.height()-jQuery( '.tabs', this.elem ).height()-this.config['bottom-space'];
-			var style = {};
-			style[this.id+' .inner'] = 'height:'+height+'px';
-			style[this.id+'.hidden .inner'] = 'height:0';
-			this.styler.add( style );
+			if ( this.config['side'] == 'top' ) {
+				jQuery( this.elem ).width( parent.outerWidth() );
+				var height = parent.height()-jQuery( '.tabs', this.elem ).height()-this.config['bottom-space'];
+				var style = {};
+				style[this.id+' .inner'] = 'height:'+height+'px';
+				style[this.id+'.hidden .inner'] = 'height:0';
+				this.styler.add( style );
+			}
 		}
 	}
 	
