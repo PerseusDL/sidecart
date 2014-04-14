@@ -175,7 +175,7 @@
 		//------------------------------------------------------------
 		// Run view init function
 		//------------------------------------------------------------
-		_view['init']();
+		_view['init']( this );
 	}
 	
 	/**
@@ -285,7 +285,7 @@
 		for ( var i=0, ii=this.config['views'].length; i<ii; i++ ) {
 			var view = this.config['views'][i];
 			if ( view.id == _viewName ) {
-				view.refresh();
+				view.refresh( this );
 			}
 		}
 	}
