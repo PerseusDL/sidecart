@@ -45,20 +45,22 @@
 	 */
 	sidecart.prototype.init = function( _elem, _config ) {
 		var self = this;
-		
 		//------------------------------------------------------------
 		//	Mark your territory
 		//------------------------------------------------------------
 		jQuery( self.elem ).addClass('sidecart')
-		
 		//------------------------------------------------------------
 		//	User options 
 		//------------------------------------------------------------
 		self.config = jQuery.extend({
 			side: 'right',
-			inside: false
+			inside: false,
+			'bottom-space': 40
 		}, _config );
-		
+		//------------------------------------------------------------
+		//  Get a styler object handy
+		//------------------------------------------------------------
+		self.styler = new Styler();
 		//------------------------------------------------------------
 		//  Start me up!
 		//------------------------------------------------------------
@@ -73,12 +75,17 @@
 		this.buildViews();
 		this.eventStart();
 		this.showFirst();
+		this.hide();
 	}
 	
 	/**
 	 * Build the application wrapper.
 	 */
 	sidecart.prototype.buildWrapper = function() {
+		//------------------------------------------------------------
+		//  Hide initially
+		//------------------------------------------------------------
+		jQuery( this.elem ).addClass('hidden');
 		//------------------------------------------------------------
 		//  Left side
 		//------------------------------------------------------------
@@ -114,6 +121,11 @@
 			var position = parent.position();
 			jQuery( this.elem ).width( parent.outerWidth() );
 			jQuery( this.elem ).css({ left: position.left });
+			var height = parent.height()-jQuery( '.tabs', this.elem ).height()-this.config['bottom-space'];
+			var style = {};
+			style[this.id+' .inner'] = 'height:'+height+'px';
+			style[this.id+'.hidden .inner'] = 'height:0';
+			this.styler.add( style );
 		}
 	}
 	
@@ -214,9 +226,6 @@
 	sidecart.prototype.slide = function() {
 		if ( this.hidden() ) {
 			this.show();
-			//------------------------------------------------------------
-			//  Run refresh
-			//------------------------------------------------------------
 		}
 		else {
 			this.hide();
