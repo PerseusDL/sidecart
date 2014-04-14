@@ -111,7 +111,9 @@
 	sidecart.prototype.fitToParent = function() {
 		if ( this.config['inside'] == true ) {
 			var parent = jQuery( this.elem ).parent();
+			var position = parent.position();
 			jQuery( this.elem ).width( parent.outerWidth() );
+			jQuery( this.elem ).css({ left: position.left });
 		}
 	}
 	
