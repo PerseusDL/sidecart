@@ -13,6 +13,13 @@
 	padding: 0;
 	box-sizing: border-box;
 }
+.sidecart a {
+	text-decoration: none;
+	color: #EE6666;
+}
+.sidecart a:hover {
+	color: #FF9999;
+}
 .sidecart.left {
 	left: 0;
 }                                                      
@@ -131,4 +138,26 @@
 }
 .sidecart .annotations a.readmore-js-toggle:hover {
 	color: #FF9999;
+}
+/* Nav */
+.sidecart .nav ul {
+	padding: 0;
+}
+.sidecart .nav a {
+	display: inline-block;
+}
+.sidecart .nav .book {
+	font-size: 120%;
+	margin-top: 20px;
+	padding: 0;
+}
+.sidecart .nav .book:first {
+	margin-top: 0;
+}
+.sidecart .nav .chapter {
+	margin: 5px 0;
+}
+.sidecart .nav li {
+	list-style: none;
+	margin-left: 10px;
 }
