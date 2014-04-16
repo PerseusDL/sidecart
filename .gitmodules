@@ -1,3 +1,6 @@
 [submodule "third_party/Readmore.js"]
 	path = third_party/Readmore.js
 	url = https://github.com/jedfoster/Readmore.js
+[submodule "third_party/jslib"]
+	path = third_party/jslib
+	url = https://github.com/caesarfeta/jslib
