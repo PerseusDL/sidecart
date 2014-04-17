@@ -172,14 +172,17 @@
 	 *								See constructor.
 	 */
 	sidecart.prototype.buildView = function( _view ) {
+		var src = jQuery( _view.src );
 		//------------------------------------------------------------
 		//  Build the view
 		//------------------------------------------------------------
 		jQuery( '.views', this.elem ).append('\
-			<div id="'+ _view.id +'" class="'+ _view.type +'">\
-				'+ jQuery( _view.src ).myHtml() +'\
-			</div>\
+			<div id="'+ _view.id +'" class="'+ _view.type +'"></div>\
 		');
+		//------------------------------------------------------------
+		//  Move the source html
+		//------------------------------------------------------------
+		src.detach().appendTo( '#'+_view.id );
 		//------------------------------------------------------------
 		//  Build the link
 		//------------------------------------------------------------
@@ -295,7 +298,7 @@
 	sidecart.prototype.viewRefresh = function( _viewName ) {
 		for ( var i=0, ii=this.config['views'].length; i<ii; i++ ) {
 			var view = this.config['views'][i];
-			if ( view.id == _viewName ) {
+			if ( view.id == _viewName && view.refresh != undefined ) {
 				view.refresh( this );
 			}
 		}
