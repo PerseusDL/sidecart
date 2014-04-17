@@ -12,6 +12,8 @@
 	overflow-x: hidden;
 	padding: 0;
 	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
 }
 .sidecart a {
 	text-decoration: none;
@@ -36,7 +38,7 @@
 	-moz-transition: all .25s ease-in;
 	-o-transition: all .25s ease-in;
 	transition: all .25s ease-in;
-	overflow-x: scroll;
+	overflow-x: hidden;
 	overflow-y: scroll;
 	height: 100%;
 	width: 320px;
@@ -52,7 +54,20 @@
 	float: left;
 }
 .sidecart .views {
+	width: 9999px;
+}
+.sidecart.top .views {
+	width: 100%;
+}
+.sidecart .views > * {
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
 	padding: 20px;
+	width: 320px;
+}
+.sidecart.top .views > * {
+	width: 100%;
 }
 .sidecart.hidden .inner {
 	width: 0;
