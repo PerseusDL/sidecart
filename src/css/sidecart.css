@@ -159,7 +159,8 @@
 }
 /* Nav */
 .sidecart .nav ul {
-	padding: 0;
+	padding-left: 15px;
+	margin-bottom: 10px;
 }
 .sidecart .nav a {
 	display: inline-block;
