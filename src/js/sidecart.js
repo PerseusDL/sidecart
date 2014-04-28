@@ -200,7 +200,7 @@
         //------------------------------------------------------------
         //  Already in the dom?
         //------------------------------------------------------------
-        if ( _view.src != undefined ) {
+        if ( _view.src != undefined && _view.src != '' ) {
             var src = jQuery( _view.src );
             //------------------------------------------------------------
             //  Move the source html
@@ -221,7 +221,9 @@
         //------------------------------------------------------------
         //  Run view init function
         //------------------------------------------------------------
-        _view['init']( this );
+		if ( _view['init'] != undefined ) {
+        	_view['init']( this );
+		}
         //------------------------------------------------------------
         //  View events
         //------------------------------------------------------------
@@ -232,6 +234,7 @@
     
     /**
      * Start event listeners.
+     * @param { _obj } _view A view configuration object;
      */
     sidecart.prototype.viewEvents = function( _view ) {
         this.tabClick( _view );

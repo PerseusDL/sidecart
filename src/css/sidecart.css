@@ -120,43 +120,6 @@
 	font-weight: 300;
 	color: #CCC;
 }
-.sidecart .annotations .name,
-.sidecart .annotations .time,
-.sidecart .annotations .date {
-	text-align: right;
-}
-.sidecart .annotations .name {
-	color: #777;
-}
-.sidecart .annotations .time,
-.sidecart .annotations .date {
-	color: #666;
-}
-.sidecart .annotations .items {}
-.sidecart .annotations .items .item p {
-	margin-top: 0;
-}
-.sidecart .annotations .items .item {
-	padding: 20px 0 40px 0;
-	border-bottom: 2px dotted #555;
-}
-.sidecart .annotations .items .item:first-of-type {
-	padding-top: 0;
-}
-.sidecart .annotations .items .item:last-of-type {
-	padding-bottom: 0;
-	border-bottom: none;
-}
-.sidecart .annotations a.readmore-js-toggle {
-	text-decoration: none;
-	display: inline-block;
-	margin-left: 10px;
-	font-size: 10px;
-	color: #EE6666;
-}
-.sidecart .annotations a.readmore-js-toggle:hover {
-	color: #FF9999;
-}
 /* Nav */
 .sidecart .nav ul {
 	padding-left: 15px;
