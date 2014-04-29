@@ -159,6 +159,9 @@
 	 * Build all of the views.
 	 */
 	sidecart.prototype.buildViews = function() {
+		if ( this.config['views'] == undefined ) {
+			return;
+		}
 		for ( var i=0, ii=this.config['views'].length; i<ii; i++ ) {
 			var view = this.config['views'][i];
 			this.buildView( view );
@@ -322,7 +325,11 @@
 		//------------------------------------------------------------
 		//  Grab the id of the first tab if no default is set.
 		//------------------------------------------------------------
-		var id = jQuery( '.tabs a', self.elem ).first().attr('href').replace('#','');
+		var first = jQuery( '.tabs a', self.elem ).first();
+		if ( first.length == 0 ) {
+			return;
+		}
+		var id = first.attr('href').replace('#','');
 		self.showView( id );
 	}
 	
