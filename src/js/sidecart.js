@@ -84,6 +84,7 @@
      */
     sidecart.prototype.theme = function() {
         if ( this.config['theme'] != null ) {
+			console.log( this.config );
             jQuery( this.elem ).addClass( this.config['theme'] );
         }
     }

@@ -114,7 +114,23 @@
 .sidecart .tabs a.selected {
 	background-color: #222;
 }
-/* Type-Specific */
+/* Themes */
+.sidecart.red .inner {
+	background-color: rgba(155,0,0,.85);
+}
+.sidecart.red .tabs {
+	background-color: #AA0000;
+}
+.sidecart.red .tabs a {
+	background-color: #AA0000;
+}
+.sidecart.red .tabs a.selected {
+	background-color: #CC0000;
+}
+.sidecart.red .tabs a:hover {
+	background-color: #DD0000;
+}
+/* Content-Type Specific */
 /* Annotations */
 .sidecart .annotations {
 	font-weight: 300;
