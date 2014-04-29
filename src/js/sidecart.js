@@ -55,7 +55,8 @@
         self.config = jQuery.extend({
             side: 'right',
             inside: false,
-            'bottom-space': 40
+            'bottom-space': 40,
+            theme: null
         }, _config );
         //------------------------------------------------------------
         //  Get a styler object handy
@@ -71,10 +72,20 @@
      * Start up sidecart.
      */
     sidecart.prototype.start = function() {
+        this.theme();
         this.buildWrapper();
         this.buildViews();
         this.resize();
         this.hide();
+    }
+    
+    /**
+     *  Apply sidecart theme.
+     */
+    sidecart.prototype.theme = function() {
+        if ( this.config['theme'] != null ) {
+            jQuery( this.elem ).addClass( this.config['theme'] );
+        }
     }
     
     /**
@@ -221,9 +232,9 @@
         //------------------------------------------------------------
         //  Run view init function
         //------------------------------------------------------------
-		if ( _view['init'] != undefined ) {
-        	_view['init']( this );
-		}
+        if ( _view['init'] != undefined ) {
+            _view['init']( this );
+        }
         //------------------------------------------------------------
         //  View events
         //------------------------------------------------------------
@@ -324,7 +335,7 @@
         //------------------------------------------------------------
         //  Run view refresh callback
         //------------------------------------------------------------
-        this.viewRefresh( _id );
+        this.refreshView( _id );
     }
     
     /**
@@ -332,7 +343,7 @@
      *
      * @param { string } _id The id of the view.
      */
-    sidecart.prototype.viewRefresh = function( _viewName ) {
+    sidecart.prototype.refreshView = function( _viewName ) {
         for ( var i=0, ii=this.config['views'].length; i<ii; i++ ) {
             var view = this.config['views'][i];
             if ( view.id == _viewName && view.refresh != undefined ) {
