@@ -56,7 +56,8 @@
             side: 'right',
             inside: false,
             'bottom-space': 40,
-            theme: null
+            theme: null,
+            'tab-pad': 2
         }, _config );
         //------------------------------------------------------------
         //  Get a styler object handy
@@ -109,12 +110,7 @@
                 jQuery( this.elem ).addClass('top');
                 break;
             default: // right side
-                jQuery( this.elem ).append( '\
-                    <div class="tabs"></div>\
-                    <div class="inner">\
-                        <div class="views"></div>\
-                    </div>\
-                ');
+                this.buildTabsFirst();
         }
         //------------------------------------------------------------
         //  Inside parent?
@@ -146,8 +142,10 @@
      */
     sidecart.prototype.buildTabsLast = function() {
         jQuery( this.elem ).append( '\
-            <div class="inner">\
-                <div class="views"></div>\
+            <div class="wrapper">\
+                <div class="inner">\
+                    <div class="views"></div>\
+                </div>\
             </div>\
             <div class="tabs"></div>\
         ');
@@ -159,8 +157,10 @@
     sidecart.prototype.buildTabsFirst = function() {
         jQuery( this.elem ).append( '\
             <div class="tabs"></div>\
-            <div class="inner">\
-                <div class="views"></div>\
+            <div class="wrapper">\
+                <div class="inner">\
+                    <div class="views"></div>\
+                </div>\
             </div>\
         ');
     }
