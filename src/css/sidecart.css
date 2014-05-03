@@ -8,6 +8,8 @@
     top: 0;
     right: 0;
     height: 0;
+    /* without this Safari blocks underlying elements */
+    width: 100%;
     z-index: 255;
 }
 .sidecart .wrapper {
@@ -60,6 +62,13 @@
 .sidecart.left .inner {
     float: left;
 }
+
+.sidecart.hidden.left .inner {
+    /* safari needs these */
+    width: 1px;
+    height: 0;
+}
+
 .sidecart .views {
     width: 9999px;
 }
@@ -153,7 +162,8 @@
         sans-serif !important;
 }
 .sidecart.perseus.hidden {
-/*  z-index: -1 !important; */
+    /* without this Safari blocks underlying elements */
+    z-index: -1 !important; 
 }
 .sidecart.perseus.hidden .tabs * {
 /*  z-index: 1 !important; */
